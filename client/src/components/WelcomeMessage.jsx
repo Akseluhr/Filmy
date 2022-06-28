@@ -2,7 +2,7 @@ import React from 'react'
 
 const WelcomeMessage = () => {
   return (
-    <div>
+    <div id='welcomeMessage'>
       <h3>Discover your favorite movie!</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas illum
