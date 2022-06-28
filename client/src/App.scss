@@ -1,5 +1,6 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./views/Home";
+@import "./components/MovieCard/MovieCard";
 
 $bg: rgb(25, 25, 25);
 
@@ -15,4 +16,9 @@ body {
   margin: auto;
   margin-top: 2.5rem;
   width: clamp(16rem, 90%, 100rem);
+}
+
+.footer {
+  text-align: center;
+  margin: 2rem;
 }
