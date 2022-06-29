@@ -1,22 +1,15 @@
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.scss'
-import NavBar from './components/Global/NavBar'
-import Footer from './components/Global/Footer'
+import { BrowserRouter } from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(
-  <>
-    <NavBar />
+  <React.StrictMode>
     <BrowserRouter>
-      <div className='content'>
-        <Routes>
-          <Route exact path='/' element={<App />} />
-        </Routes>
-      </div>
+      <App />
     </BrowserRouter>
-    <Footer />
-  </>
+  </React.StrictMode>
 )
