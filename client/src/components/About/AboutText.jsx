@@ -2,7 +2,7 @@ import React from 'react'
 
 const AboutText = () => {
   return (
-    <>
+    <div className='aboutText'>
       <h3>About</h3>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae non
@@ -30,7 +30,7 @@ const AboutText = () => {
         quos veritatis? Quos magnam sequi veniam autem unde explicabo earum est
         reiciendis necessitatibus!
       </p>
-    </>
+    </div>
   )
 }
 

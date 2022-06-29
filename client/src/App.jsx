@@ -4,6 +4,7 @@ import Home from './views/Home'
 import NavBar from './components/Global/NavBar'
 import Footer from './components/Global/Footer'
 import About from './views/About'
+import Search from './views/Search'
 
 export default function App() {
   return (
@@ -12,7 +13,8 @@ export default function App() {
       <div className='content'>
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path='about' element={<About />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/search' element={<Search />} />
         </Routes>
       </div>
       <Footer />
