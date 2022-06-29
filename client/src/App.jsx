@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 import Home from './views/Home'
 import NavBar from './components/Global/NavBar'

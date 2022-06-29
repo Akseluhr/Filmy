@@ -4,8 +4,27 @@ import Form from 'react-bootstrap/Form'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { LinkContainer } from 'react-router-bootstrap'
+import { useLocation } from 'react-router-dom'
 
 function NavBar() {
+  let searchBar = (
+    <Form className='d-flex'>
+      <Form.Control
+        type='search'
+        placeholder='Search for a movie title'
+        className='me-2'
+        aria-label='Search'
+      />
+      <Button variant='outline-success'>Search</Button>
+    </Form>
+  )
+
+  const location = useLocation()
+
+  if (location.pathname === '/') {
+    searchBar = null
+  }
+
   return (
     <Navbar bg='dark' variant='dark' expand='md'>
       <Container fluid>
@@ -26,15 +45,7 @@ function NavBar() {
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
           </Nav>
-          <Form className='d-flex'>
-            <Form.Control
-              type='search'
-              placeholder='Search for a movie title'
-              className='me-2'
-              aria-label='Search'
-            />
-            <Button variant='outline-success'>Search</Button>
-          </Form>
+          {searchBar}
         </Navbar.Collapse>
       </Container>
     </Navbar>
