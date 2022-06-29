@@ -1,4 +1,40 @@
-.wrapper {
-  width: 100px;
+#welcomeMessage {
+  margin: auto;
+  min-width: 16rem;
+  max-width: 32rem;
+  text-align: center;
+}
+
+#logo {
+  text-align: center;
+}
+
+#searchBar {
+  max-width: 40rem;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.moviePoster {
+  width: 100%;
+}
+
+* {
+  color: white;
+}
+
+body {
+  background-color: #191919;
+}
+
+.content {
+  margin: auto;
+  margin-top: 2.5rem;
+  width: clamp(16rem, 90%, 100rem);
+}
+
+.footer {
+  text-align: center;
+  margin: 2rem;
 }
 /*# sourceMappingURL=App.css.map */

@@ -1,11 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
-@import "./views/Home";
-@import "./components/MovieCard/MovieCard";
+@import "./components/Global/styles/Footer";
+@import "./components/Global/styles/MovieCard";
+@import "./components/Home/styles/SearchBar";
+@import "./components/Home/styles/WelcomeMessage";
 
 $bg: rgb(25, 25, 25);
+$fg: rgb(255,255,255);
 
 * {
-  color: white;
+  color: $fg;
 }
 
 body {
@@ -16,9 +19,4 @@ body {
   margin: auto;
   margin-top: 2.5rem;
   width: clamp(16rem, 90%, 100rem);
-}
-
-.footer {
-  text-align: center;
-  margin: 2rem;
 }
