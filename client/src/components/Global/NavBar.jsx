@@ -1,20 +1,24 @@
-import React from 'react'
+import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
+import Form from 'react-bootstrap/Form'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { LinkContainer } from 'react-router-bootstrap'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
 
-const NavBar = () => {
+function NavBar() {
   return (
-    <div className='navBar'>
-      <Navbar bg='dark' variant='dark'>
-        <Container>
-          <LinkContainer to='/'>
-            <Navbar.Brand>Filmy</Navbar.Brand>
-          </LinkContainer>
-          <Nav className='me-auto'>
+    <Navbar bg='dark' variant='dark' expand='md'>
+      <Container fluid>
+        <LinkContainer to='/'>
+          <Navbar.Brand>Filmy</Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle aria-controls='navbarScroll' />
+        <Navbar.Collapse id='navbarScroll'>
+          <Nav
+            className='me-auto my-2 my-lg-0'
+            style={{ maxHeight: '100px' }}
+            navbarScroll
+          >
             <LinkContainer to='/'>
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
@@ -25,15 +29,15 @@ const NavBar = () => {
           <Form className='d-flex'>
             <Form.Control
               type='search'
-              placeholder='Search'
+              placeholder='Search for a movie title'
               className='me-2'
               aria-label='Search'
             />
             <Button variant='outline-success'>Search</Button>
           </Form>
-        </Container>
-      </Navbar>
-    </div>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   )
 }
 
