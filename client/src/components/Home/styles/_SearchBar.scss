@@ -1,5 +1,13 @@
-.searchBar {
+.centered {
   max-width: 32rem;
   margin: auto;
   margin-bottom: 2rem;
+}
+
+.nav {
+  width: 60%;
+  max-width: 32rem;
+  form {
+    width: 100%;
+  }
 }

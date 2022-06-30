@@ -6,7 +6,7 @@ import PopularMovies from '../components/Home/PopularMovies'
 const Home = () => {
   return (
     <>
-      <SearchBar />
+      <SearchBar type='centered' />
       <WelcomeMessage />
       <PopularMovies />
     </>

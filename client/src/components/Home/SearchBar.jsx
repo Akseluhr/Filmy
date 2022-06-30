@@ -2,9 +2,9 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   return (
-    <div className='searchBar'>
+    <div className={props.type}>
       <Form className='d-flex'>
         <Form.Control
           type='search'

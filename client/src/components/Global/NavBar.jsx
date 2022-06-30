@@ -1,23 +1,12 @@
-import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
-import Form from 'react-bootstrap/Form'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useLocation } from 'react-router-dom'
+import SearchBar from './../Home/SearchBar'
 
 function NavBar() {
-  let searchBar = (
-    <Form className='d-flex'>
-      <Form.Control
-        type='search'
-        placeholder='Search for a movie title'
-        className='me-2'
-        aria-label='Search'
-      />
-      <Button variant='outline-success'>Search</Button>
-    </Form>
-  )
+  let searchBar = <SearchBar type='nav' />
 
   const location = useLocation()
 
@@ -26,7 +15,7 @@ function NavBar() {
   }
 
   return (
-    <Navbar bg='dark' variant='dark' expand='md'>
+    <Navbar bg='dark' variant='dark' expand='sm'>
       <Container fluid>
         <LinkContainer to='/'>
           <Navbar.Brand>Filmy</Navbar.Brand>
