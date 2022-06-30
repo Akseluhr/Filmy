@@ -1,13 +1,21 @@
+.nav {
+  width: 100%;
+  form {
+    width: 100%;
+  }
+}
+
 .centered {
   max-width: 32rem;
   margin: auto;
   margin-bottom: 2rem;
 }
 
-.nav {
-  width: 60%;
-  max-width: 32rem;
-  form {
-    width: 100%;
+@media (min-width: 576px) {
+
+  .nav {
+    width: 60%;
+    max-width: 32rem;
   }
+
 }
