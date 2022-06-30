@@ -1,23 +1,11 @@
-@import "~bootstrap/scss/bootstrap";
-@import "./components/Global/styles/Footer";
-@import "./components/Global/styles/MovieCard";
-@import "./components/Home/styles/SearchBar";
-@import "./components/Home/styles/WelcomeMessage";
-@import "./components/Global/styles/NavBar";
+// Utilities
+@use "~bootstrap/scss/bootstrap";
+@use "./styles/utilities/global";
+// Components
+@use "./styles/components/Footer";
+@use "./styles/components/MovieCard";
+@use "./styles/components/NavBar";
+@use "./styles/components/SearchBar";
+@use "./styles/components/WelcomeMessage";
 
-$bg: rgb(25, 25, 25);
-$fg: rgb(255,255,255);
 
-* {
-  color: $fg;
-}
-
-body {
-  background-color: $bg;
-}
-
-.content {
-  margin: auto;
-  margin-top: 2.5rem;
-  width: clamp(16rem, 90%, 80rem);
-}

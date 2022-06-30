@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useLocation } from 'react-router-dom'
-import SearchBar from './../Home/SearchBar'
+import SearchBar from '../Home/SearchBar'
 
 function NavBar() {
   let searchBar = <SearchBar type='nav' />

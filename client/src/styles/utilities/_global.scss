@@ -1,0 +1,23 @@
+@use "./vars";
+
+* {
+  color: vars.$fg;
+}
+
+p {
+  color: vars.$fg2;
+}
+
+body {
+  background-color: vars.$bg;
+}
+
+.content {
+  margin: auto;
+  margin-top: 2.5rem;
+  width: clamp(16rem, 90%, 80rem);
+}
+
+.bg-dark {
+  background-color: vars.$bg2 !important;
+}

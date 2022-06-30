@@ -1,40 +1,8 @@
-#welcomeMessage {
-  margin: auto;
-  min-width: 16rem;
-  max-width: 32rem;
-  text-align: center;
-}
-
-#logo {
-  text-align: center;
-}
-
-#searchBar {
-  max-width: 40rem;
-  margin: auto;
-  margin-bottom: 2rem;
-}
-
-.moviePoster {
-  width: 100%;
-}
-
-* {
-  color: white;
-}
-
-body {
-  background-color: #191919;
-}
-
-.content {
-  margin: auto;
-  margin-top: 2.5rem;
-  width: clamp(16rem, 90%, 100rem);
-}
-
-.footer {
-  text-align: center;
-  margin: 2rem;
-}
+@use "~bootstrap/scss/bootstrap";
+@use "./styles/utilities/global";
+@use "./styles/components/Footer";
+@use "./styles/components/MovieCard";
+@use "./styles/components/NavBar";
+@use "./styles/components/SearchBar";
+@use "./styles/components/WelcomeMessage";
 /*# sourceMappingURL=App.css.map */
