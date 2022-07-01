@@ -1,0 +1,11 @@
+// Utilities
+@use "~bootstrap/scss/bootstrap";
+@use "./styles/utilities/global";
+// Components
+@use "./styles/components/Footer";
+@use "./styles/components/MovieCard";
+@use "./styles/components/NavBar";
+@use "./styles/components/SearchBar";
+@use "./styles/components/WelcomeMessage";
+
+
