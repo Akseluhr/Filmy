@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 
 import Home from './views/Home'
 import NavBar from './components/Global/NavBar'
@@ -14,8 +13,10 @@ export default function App() {
       <div className='content'>
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/search' element={<Search />} />
+          <Route path='about' element={<About />} />
+          <Route path='search' element={<Search />}>
+            <Route path=':query' element={<Search />} />
+          </Route>
         </Routes>
       </div>
       <Footer />
