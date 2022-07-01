@@ -1,14 +1,14 @@
 import React from 'react'
-import SearchBar from '../components/Home/SearchBar'
+import SearchBar from '../components/Global/SearchBar'
 import WelcomeMessage from '../components/Home/WelcomeMessage'
-import PopularMovies from '../components/Home/PopularMovies'
+import MovieCardGrid from './../components/Global/MovieCardGrid'
 
 const Home = () => {
   return (
     <>
       <SearchBar type='centered' />
       <WelcomeMessage />
-      <PopularMovies />
+      <MovieCardGrid length={6} />
     </>
   )
 }

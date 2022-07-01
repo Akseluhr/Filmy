@@ -1,12 +1,12 @@
 import React from 'react'
-import PopularMoviesGrid from './PopularMoviesGrid'
+import MovieCardGrid from './../Global/MovieCardGrid'
 
 const PopularMovies = () => {
   return (
     <>
       <div className='popularMovies'>
         <h4>Popular movies</h4>
-        <PopularMoviesGrid />
+        <MovieCardGrid length={6} />
       </div>
     </>
   )
