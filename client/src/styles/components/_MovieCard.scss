@@ -1,7 +1,28 @@
+@use "../utilities/vars";
+
 .movieCard {
   filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.7));
+  border-radius: 2.5%;
+  overflow: hidden;
+  cursor: pointer;
+
+  .movieInfo {
+    position: absolute;
+    bottom: -4rem;
+    height: 4rem;
+    width: 100%;
+    padding: .25rem;
+    padding-left: .5rem;
+    text-align: center;
+    background-color: vars.$bg2;
+    transition: .3s;
+  }
+
+  &:hover .movieInfo {
+    bottom: 0;
+  }
+
   .movieImg {
     width: 100%;
-    border-radius: 2.5%;
   }
 }

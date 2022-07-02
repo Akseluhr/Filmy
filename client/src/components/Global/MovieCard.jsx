@@ -8,6 +8,9 @@ const MovieCard = () => {
         alt='Movie'
         className='movieImg'
       />
+      <div className='movieInfo'>
+        <h6>Movie Title (Year)</h6>
+      </div>
     </div>
   )
 }
