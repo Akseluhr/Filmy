@@ -1,5 +1,7 @@
 @use "../utilities/vars";
 
+$height: 4rem;
+
 .movieCard {
   filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.7));
   border-radius: 2.5%;
@@ -8,8 +10,8 @@
 
   .movieInfo {
     position: absolute;
-    bottom: -4rem;
-    height: 4rem;
+    bottom: -$height;
+    height: $height;
     width: 100%;
     padding: .25rem;
     padding-left: .5rem;
