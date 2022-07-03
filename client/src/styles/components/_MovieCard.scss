@@ -1,9 +1,9 @@
-@use "../utilities/vars";
+@use '../utilities/vars';
 
 $height: 4rem;
 
 .movieCard {
-  filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.7));
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.7));
   border-radius: 2.5%;
   overflow: hidden;
   cursor: pointer;
@@ -13,11 +13,11 @@ $height: 4rem;
     bottom: -$height;
     height: $height;
     width: 100%;
-    padding: .25rem;
-    padding-left: .5rem;
+    padding: 0.25rem;
+    padding-left: 0.5rem;
     text-align: center;
     background-color: vars.$bg2;
-    transition: .3s;
+    transition: 0.3s;
   }
 
   &:hover .movieInfo {
