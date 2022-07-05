@@ -6,16 +6,14 @@
 }
 
 .centered {
-  max-width: 32rem;
   margin: auto;
   margin-bottom: 2rem;
+  max-width: 32rem;
 }
 
 @media (min-width: 576px) {
-
   .nav {
-    width: 60%;
     max-width: 32rem;
+    width: 60%;
   }
-
 }

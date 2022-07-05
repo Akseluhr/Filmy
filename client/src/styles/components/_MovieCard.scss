@@ -3,21 +3,21 @@
 $height: 4rem;
 
 .movieCard {
-  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.7));
   border-radius: 2.5%;
-  overflow: hidden;
   cursor: pointer;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.7));
+  overflow: hidden;
 
   .movieInfo {
-    position: absolute;
+    background-color: vars.$bg2;
     bottom: -$height;
     height: $height;
-    width: 100%;
     padding: 0.25rem;
     padding-left: 0.5rem;
+    position: absolute;
     text-align: center;
-    background-color: vars.$bg2;
     transition: 0.3s;
+    width: 100%;
   }
 
   &:hover .movieInfo {

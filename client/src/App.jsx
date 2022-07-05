@@ -1,9 +1,9 @@
-import { Routes, Route } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
+import About from './views/About'
+import Footer from './components/Global/Footer'
 import Home from './views/Home'
 import NavBar from './components/Global/NavBar'
-import Footer from './components/Global/Footer'
-import About from './views/About'
 import Search from './views/Search'
 
 export default function App() {
