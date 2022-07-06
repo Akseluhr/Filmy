@@ -17,7 +17,7 @@ const MovieCard = (props) => {
     const response = await axios.get(
       `https://imdb-api.com/en/API/Title/${apiKey}/${props.movieId}`
     )
-    console.log(response)
+    console.log(response.data)
     setImg(response.data.image)
     setTitle(response.data.fullTitle)
   }
