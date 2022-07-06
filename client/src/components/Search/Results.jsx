@@ -1,6 +1,6 @@
+import MovieCardGrid from '../Global/MovieCardGrid'
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import MovieCardGrid from '../Global/MovieCardGrid'
 
 const Results = () => {
   const { query } = useParams()
