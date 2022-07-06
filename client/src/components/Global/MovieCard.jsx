@@ -10,7 +10,7 @@ const MovieCard = (props) => {
   const apiKey = 'k_yzqb0jra'
 
   const getMovie = async () => {
-    if (props.idx != 0) return // För att förhindra för många API-anrop
+    if (props.idx !== 0) return // För att förhindra för många API-anrop
 
     const response = await axios.get(
       `https://imdb-api.com/en/API/Title/${apiKey}/${props.movieId}`
