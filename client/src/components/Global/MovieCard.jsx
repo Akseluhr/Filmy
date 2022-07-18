@@ -1,12 +1,13 @@
 import { LinkContainer } from 'react-router-bootstrap'
 import React from 'react'
+import placeholderImg from '../../assets/inception.jpg'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
 const axios = require('axios').default
 
 const MovieCard = (props) => {
-  const [img, setImg] = useState('https://picsum.photos/270/400')
+  const [img, setImg] = useState(placeholderImg)
   const [title, setTitle] = useState('Movie Title (Year)')
   const apiKey = 'k_yzqb0jra'
   const movieId = 'tt0816692'

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import Badge from 'react-bootstrap/Badge'
 import React from 'react'
-import ReactStars from 'react-rating-stars-component'
+import placeholderImg from '../../assets/inception.jpg'
 import { useParams } from 'react-router-dom'
 
 const axios = require('axios').default
@@ -15,7 +15,7 @@ const MoviePage = (props) => {
   const apiKey = 'k_yzqb0jra'
   const { id } = useParams()
 
-  const [image, setImage] = useState(`https://picsum.photos/${width}/${height}`)
+  const [image, setImage] = useState(placeholderImg)
   const [fullTitle, setFullTitle] = useState()
   const [plot, setPlot] = useState()
   const [genreList, setGenreList] = useState([])

@@ -1,0 +1,17 @@
+.activeSearch {
+  .activeSearchMovie {
+    display: flex;
+    margin-bottom: 1rem;
+    .activeSearchImg {
+      border-radius: 5%;
+      cursor: pointer;
+      margin-right: 1rem;
+      width: 4rem;
+    }
+    h5 {
+      cursor: pointer;
+      height: -moz-fit-content;
+      height: fit-content;
+    }
+  }
+}
