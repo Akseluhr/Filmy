@@ -1,6 +1,6 @@
 @use '../utilities/vars';
 
-$height: 4rem;
+$height: 3rem;
 
 .movieCard {
   border-radius: 2.5%;
@@ -10,10 +10,13 @@ $height: 4rem;
 
   .movieInfo {
     background-color: vars.$bg2;
+    background-color: rgb(0, 0, 0, 0.7);
     bottom: -$height;
+    display: flex;
+    flex-direction: column;
     height: $height;
+    justify-content: center;
     padding: 0.25rem;
-    padding-left: 0.5rem;
     position: absolute;
     text-align: center;
     transition: 0.3s;
@@ -25,7 +28,7 @@ $height: 4rem;
   }
 
   .movieImg {
-    aspect-ratio: 27 / 40;
+    // aspect-ratio: 27 / 40;
     width: 100%;
   }
 }

@@ -8,7 +8,7 @@ const MovieCardGrid = (props) => {
 
   return (
     <div className='popularMoviesGrid'>
-      <Row xs={2} sm={3} md={4} lg={5} xl={6} className='g-4'>
+      <Row xs={2} sm={4} lg={6} className='g-4'>
         {Array.from({ length: props.length }).map((_, idx) => (
           <Col key={idx}>
             <MovieCard idx={idx} movieId={movieId} />
