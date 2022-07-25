@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react'
 
 import Badge from 'react-bootstrap/Badge'
+import ClipLoader from 'react-spinners/ClipLoader'
 import React from 'react'
 import placeholderImg from '../../assets/inception.jpg'
 import { useParams } from 'react-router-dom'
 
 const axios = require('axios').default
 
-const MoviePage = (props) => {
-  const scale = 30
-  const width = 27 * scale
-  const height = 40 * scale
-
+const MoviePage = () => {
   const apiKey = 'k_yzqb0jra'
   const { id } = useParams()
+  const [loading, setLoading] = useState(true)
 
-  const [image, setImage] = useState(placeholderImg)
+  const [image, setImage] = useState()
   const [fullTitle, setFullTitle] = useState()
   const [plot, setPlot] = useState()
   const [genreList, setGenreList] = useState([])
@@ -30,6 +28,7 @@ const MoviePage = (props) => {
     )
     const data = response.data
     console.log(data)
+
     setImage(data.image)
     setFullTitle(data.fullTitle)
     setPlot(data.plot)
@@ -38,6 +37,8 @@ const MoviePage = (props) => {
     setDirectors(data.directors)
     setWriters(data.writers)
     setImDbRating(data.imDbRating)
+
+    setLoading(!loading)
   }
 
   useEffect(() => {
@@ -46,41 +47,47 @@ const MoviePage = (props) => {
 
   return (
     <div className='moviePage'>
-      <div className='imgContainer'>
-        <img src={image} alt='movie' />
-      </div>
-      <div className='movieText'>
-        <h2>{fullTitle}</h2>
-        <p>{plot}</p>
-        <h5>
-          {genreList.map((genre, idx) => (
-            <span key={idx}>
-              <Badge pill bg='secondary'>
-                {genre.value}
-              </Badge>{' '}
-            </span>
-          ))}
-        </h5>
-        <br />
-        <p>
-          <b>Actors: </b>
-          {stars}
-        </p>
-        <p>
-          <b>Director(s): </b>
-          {directors}
-        </p>
-        <p>
-          <b>Writer(s): </b>
-          {writers}
-        </p>
-        <p>
-          <b>IMDb rating: </b>
-          <Badge pill bg='warning' text='dark'>
-            {imDbRating}/10
-          </Badge>
-        </p>
-      </div>
+      {loading ? (
+        <ClipLoader loading={loading} size={35} color='#c3d9ff' />
+      ) : (
+        <>
+          <div className='imgContainer'>
+            <img src={image} alt='movie' />
+          </div>
+          <div className='movieText'>
+            <h2>{fullTitle}</h2>
+            <p>{plot}</p>
+            <h5>
+              {genreList.map((genre, idx) => (
+                <span key={idx}>
+                  <Badge pill bg='secondary'>
+                    {genre.value}
+                  </Badge>{' '}
+                </span>
+              ))}
+            </h5>
+            <br />
+            <p>
+              <b>Actors: </b>
+              {stars}
+            </p>
+            <p>
+              <b>Director(s): </b>
+              {directors}
+            </p>
+            <p>
+              <b>Writer(s): </b>
+              {writers}
+            </p>
+            <p>
+              <b>IMDb rating: </b>
+              <Badge pill bg='warning' text='dark'>
+                {imDbRating}/10
+              </Badge>
+            </p>
+          </div>
+        </>
+      )}
     </div>
   )
 }
