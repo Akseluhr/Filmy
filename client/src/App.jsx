@@ -11,21 +11,23 @@ import Search from './views/Search'
 export default function App() {
   return (
     <>
-      <NavBar />
-      <div className='content'>
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route path='about' element={<About />} />
-          <Route path='search' element={<Search />}>
-            <Route path=':query' element={<Search />} />
-          </Route>
-          <Route path='movie'>
-            <Route path=':id' element={<Movie />} />
-          </Route>
-          <Route path='*' element={<Error />} />
-        </Routes>
+      <div className='flex-wrapper'>
+        <NavBar />
+        <div className='content'>
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route path='about' element={<About />} />
+            <Route path='search' element={<Search />}>
+              <Route path=':query' element={<Search />} />
+            </Route>
+            <Route path='movie'>
+              <Route path=':id' element={<Movie />} />
+            </Route>
+            <Route path='*' element={<Error />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   )
 }

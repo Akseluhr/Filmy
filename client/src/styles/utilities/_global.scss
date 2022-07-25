@@ -18,6 +18,13 @@ body {
   width: clamp(16rem, 90%, 80rem);
 }
 
+.flex-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
 .bg-dark {
   background-color: vars.$bg2 !important;
 }

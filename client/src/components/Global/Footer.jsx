@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       <div className='footer'>
-        <p>Frans Ekman and Aksel Uhr</p>
+        <p>Frans Ekman & Aksel Uhr</p>
         <p>2022</p>
       </div>
     </>
