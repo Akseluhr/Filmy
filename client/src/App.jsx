@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 
 import About from './views/About'
+import Error from './components/Global/Error'
 import Footer from './components/Global/Footer'
 import Home from './views/Home'
 import Movie from './views/Movie'
@@ -21,6 +22,7 @@ export default function App() {
           <Route path='movie'>
             <Route path=':id' element={<Movie />} />
           </Route>
+          <Route path='*' element={<Error />} />
         </Routes>
       </div>
       <Footer />

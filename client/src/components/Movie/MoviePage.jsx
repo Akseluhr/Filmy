@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react'
 
 import Badge from 'react-bootstrap/Badge'
+import Error from '../Global/Error'
 import React from 'react'
 import placeholderImg from '../../assets/inception.jpg'
 import { useParams } from 'react-router-dom'
 
 const axios = require('axios').default
 
-const MoviePage = (props) => {
-  const scale = 30
-  const width = 27 * scale
-  const height = 40 * scale
-
+const MoviePage = () => {
   const apiKey = 'k_yzqb0jra'
   const { id } = useParams()
+  const [error, setError] = useState(false)
 
   const [image, setImage] = useState(placeholderImg)
   const [fullTitle, setFullTitle] = useState()
@@ -28,8 +26,14 @@ const MoviePage = (props) => {
     const response = await axios.get(
       `https://imdb-api.com/en/API/Title/${apiKey}/${id}`
     )
+    console.log(response)
     const data = response.data
-    console.log(data)
+
+    if (response.status >= 300 || data.errorMessage != null) {
+      setError(true)
+      return
+    }
+
     setImage(data.image)
     setFullTitle(data.fullTitle)
     setPlot(data.plot)
@@ -44,7 +48,9 @@ const MoviePage = (props) => {
     getMovie()
   }, [])
 
-  return (
+  return error ? (
+    <Error />
+  ) : (
     <div className='moviePage'>
       <div className='imgContainer'>
         <img src={image} alt='movie' />
