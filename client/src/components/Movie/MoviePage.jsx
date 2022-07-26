@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 
 import Badge from 'react-bootstrap/Badge'
-import ClipLoader from 'react-spinners/ClipLoader'
+import Loader from '../Global/Loader'
 import React from 'react'
-import placeholderImg from '../../assets/inception.jpg'
 import { useParams } from 'react-router-dom'
 
 const axios = require('axios').default
@@ -45,49 +44,45 @@ const MoviePage = () => {
     getMovie()
   }, [])
 
-  return (
+  return loading ? (
+    <Loader loading={loading} />
+  ) : (
     <div className='moviePage'>
-      {loading ? (
-        <ClipLoader loading={loading} size={35} color='#c3d9ff' />
-      ) : (
-        <>
-          <div className='imgContainer'>
-            <img src={image} alt='movie' />
-          </div>
-          <div className='movieText'>
-            <h2>{fullTitle}</h2>
-            <p>{plot}</p>
-            <h5>
-              {genreList.map((genre, idx) => (
-                <span key={idx}>
-                  <Badge pill bg='secondary'>
-                    {genre.value}
-                  </Badge>{' '}
-                </span>
-              ))}
-            </h5>
-            <br />
-            <p>
-              <b>Actors: </b>
-              {stars}
-            </p>
-            <p>
-              <b>Director(s): </b>
-              {directors}
-            </p>
-            <p>
-              <b>Writer(s): </b>
-              {writers}
-            </p>
-            <p>
-              <b>IMDb rating: </b>
-              <Badge pill bg='warning' text='dark'>
-                {imDbRating}/10
-              </Badge>
-            </p>
-          </div>
-        </>
-      )}
+      <div className='imgContainer'>
+        <img src={image} alt='movie' />
+      </div>
+      <div className='movieText'>
+        <h2>{fullTitle}</h2>
+        <p>{plot}</p>
+        <h5>
+          {genreList.map((genre, idx) => (
+            <span key={idx}>
+              <Badge pill bg='secondary'>
+                {genre.value}
+              </Badge>{' '}
+            </span>
+          ))}
+        </h5>
+        <br />
+        <p>
+          <b>Actors: </b>
+          {stars}
+        </p>
+        <p>
+          <b>Director(s): </b>
+          {directors}
+        </p>
+        <p>
+          <b>Writer(s): </b>
+          {writers}
+        </p>
+        <p>
+          <b>IMDb rating: </b>
+          <Badge pill bg='warning' text='dark'>
+            {imDbRating}/10
+          </Badge>
+        </p>
+      </div>
     </div>
   )
 }
