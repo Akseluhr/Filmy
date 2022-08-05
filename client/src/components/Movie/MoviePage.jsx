@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 
 import Badge from 'react-bootstrap/Badge'
+import Error from '../Global/Error'
 import Loader from '../Global/Loader'
 import React from 'react'
 import { fetchMovie } from '../../api/fetchMovie'
 import { useParams } from 'react-router-dom'
 
 const MoviePage = () => {
-  const { id } = useParams()
   const [loading, setLoading] = useState(true)
+  const { id } = useParams()
+  const [error, setError] = useState(false)
 
   const [image, setImage] = useState()
   const [fullTitle, setFullTitle] = useState()
@@ -21,6 +23,8 @@ const MoviePage = () => {
 
   const fetchData = async () => {
     const data = await fetchMovie(id)
+
+    if (data === 'error') setError(true)
 
     setImage(data.image)
     setFullTitle(data.fullTitle)
@@ -40,6 +44,8 @@ const MoviePage = () => {
 
   return loading ? (
     <Loader loading={loading} />
+  ) : error ? (
+    <Error />
   ) : (
     <div className='moviePage'>
       <div className='imgContainer'>
