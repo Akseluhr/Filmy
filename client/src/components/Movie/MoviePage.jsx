@@ -2,18 +2,17 @@ import { useEffect, useState } from 'react'
 
 import Badge from 'react-bootstrap/Badge'
 import Error from '../Global/Error'
+import Loader from '../Global/Loader'
 import React from 'react'
-import placeholderImg from '../../assets/inception.jpg'
+import { fetchMovie } from '../../api/fetchMovie'
 import { useParams } from 'react-router-dom'
 
-const axios = require('axios').default
-
 const MoviePage = () => {
-  const apiKey = 'k_yzqb0jra'
+  const [loading, setLoading] = useState(true)
   const { id } = useParams()
   const [error, setError] = useState(false)
 
-  const [image, setImage] = useState(placeholderImg)
+  const [image, setImage] = useState()
   const [fullTitle, setFullTitle] = useState()
   const [plot, setPlot] = useState()
   const [genreList, setGenreList] = useState([])
@@ -22,17 +21,10 @@ const MoviePage = () => {
   const [writers, setWriters] = useState()
   const [imDbRating, setImDbRating] = useState()
 
-  const getMovie = async () => {
-    const response = await axios.get(
-      `https://imdb-api.com/en/API/Title/${apiKey}/${id}`
-    )
-    console.log(response)
-    const data = response.data
+  const fetchData = async () => {
+    const data = await fetchMovie(id)
 
-    if (response.status >= 300 || data.errorMessage != null) {
-      setError(true)
-      return
-    }
+    if (data === 'error') setError(true)
 
     setImage(data.image)
     setFullTitle(data.fullTitle)
@@ -42,13 +34,17 @@ const MoviePage = () => {
     setDirectors(data.directors)
     setWriters(data.writers)
     setImDbRating(data.imDbRating)
+
+    setLoading(!loading)
   }
 
   useEffect(() => {
-    getMovie()
+    fetchData()
   }, [])
 
-  return error ? (
+  return loading ? (
+    <Loader loading={loading} />
+  ) : error ? (
     <Error />
   ) : (
     <div className='moviePage'>
