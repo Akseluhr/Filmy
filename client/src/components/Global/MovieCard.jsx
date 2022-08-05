@@ -12,22 +12,26 @@ const MovieCard = (props) => {
   const [loading, setLoading] = useState(true)
   const id = 'tt0816692'
 
-  const fetchData = async () => {
-    // För att förhindra för många API-anrop
-    if (props.idx !== 0) {
+  useEffect(() => {
+    const fetchData = async () => {
+      // För att förhindra för många API-anrop
+      if (props.idx !== 0) {
+        setLoading(false)
+        return
+      }
+
+      const data = await fetchMovie(id)
+      if (data === null) {
+        // TODO: Error message
+        return
+      }
+      setImg(data.image)
+      setTitle(data.fullTitle)
       setLoading(false)
-      return
     }
 
-    const data = await fetchMovie(id)
-    setImg(data.image)
-    setTitle(data.fullTitle)
-    setLoading(false)
-  }
-
-  useEffect(() => {
     fetchData()
-  }, [])
+  }, [props.idx])
 
   return loading ? (
     <Loader loading={loading} />

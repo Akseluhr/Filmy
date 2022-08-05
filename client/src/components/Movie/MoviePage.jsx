@@ -8,8 +8,8 @@ import { fetchMovie } from '../../api/fetchMovie'
 import { useParams } from 'react-router-dom'
 
 const MoviePage = () => {
-  const [loading, setLoading] = useState(true)
   const { id } = useParams()
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
   const [image, setImage] = useState()
@@ -21,26 +21,30 @@ const MoviePage = () => {
   const [writers, setWriters] = useState()
   const [imDbRating, setImDbRating] = useState()
 
-  const fetchData = async () => {
-    const data = await fetchMovie(id)
-
-    if (data === 'error') setError(true)
-
-    setImage(data.image)
-    setFullTitle(data.fullTitle)
-    setPlot(data.plot)
-    setGenreList(data.genreList)
-    setStars(data.stars)
-    setDirectors(data.directors)
-    setWriters(data.writers)
-    setImDbRating(data.imDbRating)
-
-    setLoading(!loading)
-  }
-
   useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchMovie(id)
+
+      if (data === null) {
+        setLoading(false)
+        setError(true)
+        return
+      }
+
+      setImage(data.image)
+      setFullTitle(data.fullTitle)
+      setPlot(data.plot)
+      setGenreList(data.genreList)
+      setStars(data.stars)
+      setDirectors(data.directors)
+      setWriters(data.writers)
+      setImDbRating(data.imDbRating)
+
+      setLoading(false)
+    }
+
     fetchData()
-  }, [])
+  }, [id])
 
   return loading ? (
     <Loader loading={loading} />
