@@ -3,12 +3,10 @@ import { useEffect, useState } from 'react'
 import Badge from 'react-bootstrap/Badge'
 import Loader from '../Global/Loader'
 import React from 'react'
+import { fetchMovie } from '../../api/fetchMovie'
 import { useParams } from 'react-router-dom'
 
-const axios = require('axios').default
-
 const MoviePage = () => {
-  const apiKey = 'k_yzqb0jra'
   const { id } = useParams()
   const [loading, setLoading] = useState(true)
 
@@ -21,12 +19,8 @@ const MoviePage = () => {
   const [writers, setWriters] = useState()
   const [imDbRating, setImDbRating] = useState()
 
-  const getMovie = async () => {
-    const response = await axios.get(
-      `https://imdb-api.com/en/API/Title/${apiKey}/${id}`
-    )
-    const data = response.data
-    console.log(data)
+  const fetchData = async () => {
+    const data = await fetchMovie(id)
 
     setImage(data.image)
     setFullTitle(data.fullTitle)
@@ -41,7 +35,7 @@ const MoviePage = () => {
   }
 
   useEffect(() => {
-    getMovie()
+    fetchData()
   }, [])
 
   return loading ? (
