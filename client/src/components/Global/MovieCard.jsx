@@ -22,9 +22,11 @@ const MovieCard = (props) => {
 
       const data = await fetchMovie(id)
       if (data === null) {
+        setLoading(false)
         // TODO: Error message
         return
       }
+
       setImg(data.image)
       setTitle(data.fullTitle)
       setLoading(false)
