@@ -4,6 +4,11 @@ const apiKey = 'k_yzqb0jra'
 
 export const fetchMovie = async (id) => {
   const response = await axios.get(`${apiBaseURL}/${apiKey}/${id}`)
+
+  if (response.status >= 300 || response.data.errorMessage != null) {
+    return 'error'
+  }
+
   const data = response.data
   console.log(data)
   return data
