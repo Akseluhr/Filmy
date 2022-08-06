@@ -10,7 +10,8 @@ const MovieCard = (props) => {
   const [img, setImg] = useState(placeholderImg)
   const [title, setTitle] = useState('Movie Title (Year)')
   const [loading, setLoading] = useState(true)
-  const id = 'tt0816692'
+  const [error, setError] = useState(false)
+  const id = 'tt0816692' //placeholder
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +24,7 @@ const MovieCard = (props) => {
       const data = await fetchMovie(id)
       if (data === null) {
         setLoading(false)
-        // TODO: Error message
+        setError(true)
         return
       }
 
@@ -37,6 +38,8 @@ const MovieCard = (props) => {
 
   return loading ? (
     <Loader loading={loading} />
+  ) : error ? (
+    <p>⚠️ Error</p>
   ) : (
     <LinkContainer to={`/movie/${id}`}>
       <div className='movieCard'>
