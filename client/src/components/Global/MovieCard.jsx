@@ -12,11 +12,12 @@ const MovieCard = (props) => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const id = 'tt0816692' //placeholder
+  const preventApiCalls = true //Bara för development
 
   useEffect(() => {
     const fetchData = async () => {
-      // För att förhindra för många API-anrop
-      if (props.idx !== 0) {
+      // För att förhindra för många API-anrop i development
+      if (props.idx !== 0 || preventApiCalls) {
         setLoading(false)
         return
       }

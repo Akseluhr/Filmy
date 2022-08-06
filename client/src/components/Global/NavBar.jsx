@@ -3,6 +3,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import SearchBar from '../Global/SearchBar'
+import logo from '../../assets/logo.svg'
 import { useLocation } from 'react-router-dom'
 
 function NavBar() {
@@ -13,7 +14,9 @@ function NavBar() {
     <Navbar bg='dark' variant='dark' expand='sm'>
       <Container fluid>
         <LinkContainer to='/'>
-          <Navbar.Brand>Filmy</Navbar.Brand>
+          <Navbar.Brand>
+            <img src={logo} alt='logo' height={'40px'} />
+          </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls='navbarScroll' />
         <Navbar.Collapse id='navbarScroll'>
