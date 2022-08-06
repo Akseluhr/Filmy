@@ -1,18 +1,13 @@
 import Container from 'react-bootstrap/Container'
+import { LinkContainer } from 'react-router-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import { LinkContainer } from 'react-router-bootstrap'
-import { useLocation } from 'react-router-dom'
 import SearchBar from '../Global/SearchBar'
+import { useLocation } from 'react-router-dom'
 
 function NavBar() {
-  let searchBar = <SearchBar type='nav' />
-
   const location = useLocation()
-
-  if (location.pathname === '/') {
-    searchBar = null
-  }
+  const onHomePage = location.pathname === '/'
 
   return (
     <Navbar bg='dark' variant='dark' expand='sm'>
@@ -30,7 +25,7 @@ function NavBar() {
               <Nav.Link>About</Nav.Link>
             </LinkContainer>
           </Nav>
-          {searchBar}
+          {!onHomePage && <SearchBar type='nav' />}
         </Navbar.Collapse>
       </Container>
     </Navbar>
