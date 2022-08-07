@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import PopularMovies from './../components/Home/PopularMovies'
 import SearchBar from '../components/Global/SearchBar'
 import WelcomeMessage from '../components/Home/WelcomeMessage'
-import PopularMovies from './../components/Home/PopularMovies'
+import { fetchRecommendations } from '../api/fetchRecommendations'
 
 const Home = () => {
+  useEffect(() => {
+    const data = fetchRecommendations('Iron Man (2008)')
+    console.log(data)
+  }, [])
+
   return (
     <>
       <SearchBar type='centered' />

@@ -28,3 +28,19 @@ body {
 .bg-dark {
   background-color: vars.$bg2 !important;
 }
+
+.bg {
+  background-color: vars.$bg;
+}
+
+.bg-2 {
+  background-color: vars.$bg2;
+}
+
+.fg {
+  color: vars.$fg;
+}
+
+.fg-2 {
+  color: vars.$fg2;
+}
