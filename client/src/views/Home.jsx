@@ -7,8 +7,12 @@ import { fetchRecommendations } from '../api/fetchRecommendations'
 
 const Home = () => {
   useEffect(() => {
-    const data = fetchRecommendations('Iron Man (2008)')
-    console.log(data)
+    const fetchData = async () => {
+      const data = fetchRecommendations('Iron Man (2008)')
+      console.log(data)
+    }
+
+    fetchData()
   }, [])
 
   return (
