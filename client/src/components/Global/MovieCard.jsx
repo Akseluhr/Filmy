@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import Loader from './Loader'
 import React from 'react'
 import { fetchMovie } from '../../api/fetchMovie'
+import { formatId } from './../../api/formatId'
 import placeholderImg from '../../assets/inception.jpg'
 
 const MovieCard = (props) => {
@@ -11,18 +12,12 @@ const MovieCard = (props) => {
   const [title, setTitle] = useState('Movie Title (Year)')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-  const id = 'tt0816692' //placeholder
-  const preventApiCalls = true //Bara för development
 
   useEffect(() => {
     const fetchData = async () => {
-      // För att förhindra för många API-anrop i development
-      if (props.idx !== 0 || preventApiCalls) {
-        setLoading(false)
-        return
-      }
-
+      const id = formatId(props.id)
       const data = await fetchMovie(id)
+      console.log(data)
       if (data === null) {
         setLoading(false)
         setError(true)
@@ -35,14 +30,14 @@ const MovieCard = (props) => {
     }
 
     fetchData()
-  }, [props.idx])
+  }, [props.id, props.idx])
 
   return loading ? (
     <Loader loading={loading} />
   ) : error ? (
     <p>⚠️ Error</p>
   ) : (
-    <LinkContainer to={`/movie/${id}`}>
+    <LinkContainer to={`/movie/${props.id}`}>
       <div className='movieCard'>
         <img src={img} alt='Movie' className='movieImg' />
         <div className='movieInfo'>

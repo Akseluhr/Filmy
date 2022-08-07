@@ -1,12 +1,12 @@
-import React from 'react'
 import MovieCardGrid from './../Global/MovieCardGrid'
+import React from 'react'
 
 const PopularMovies = () => {
   return (
     <>
       <div className='popularMovies'>
         <h4>Popular movies</h4>
-        <MovieCardGrid length={6} />
+        <MovieCardGrid movies={[]} />
       </div>
     </>
   )
