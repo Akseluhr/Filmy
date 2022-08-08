@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import ActiveSearch from './../components/Search/ActiveSearch'
+import Loader from '../components/Global/Loader'
 import Results from './../components/Search/Results'
 import { fetchRecommendations } from './../api/fetchRecommendations'
 import { useParams } from 'react-router-dom'
@@ -18,12 +19,14 @@ const Search = () => {
       setLoading(false)
     }
     fetchData()
-  }, [])
+  }, [query])
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <>
       <ActiveSearch />
-      {!loading && <Results recommendations={recommendations} />}
+      <Results recommendations={recommendations} />
     </>
   )
 }

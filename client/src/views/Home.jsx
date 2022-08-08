@@ -1,4 +1,3 @@
-import PopularMovies from './../components/Home/PopularMovies'
 import React from 'react'
 import SearchBar from '../components/Global/SearchBar'
 import WelcomeMessage from '../components/Home/WelcomeMessage'
@@ -8,7 +7,6 @@ const Home = () => {
     <>
       <SearchBar type='centered' />
       <WelcomeMessage />
-      <PopularMovies />
     </>
   )
 }

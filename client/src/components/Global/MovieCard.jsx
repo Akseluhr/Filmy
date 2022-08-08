@@ -12,18 +12,21 @@ const MovieCard = (props) => {
   const [title, setTitle] = useState('Movie Title (Year)')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [imdbId, setImdbId] = useState()
 
   useEffect(() => {
     const fetchData = async () => {
       const id = formatId(props.id)
       const data = await fetchMovie(id)
       console.log(data)
+
       if (data === null) {
         setLoading(false)
         setError(true)
         return
       }
 
+      setImdbId(id)
       setImg(data.image)
       setTitle(data.fullTitle)
       setLoading(false)
@@ -37,7 +40,7 @@ const MovieCard = (props) => {
   ) : error ? (
     <p>⚠️ Error</p>
   ) : (
-    <LinkContainer to={`/movie/${props.id}`}>
+    <LinkContainer to={`/movie/${imdbId}`}>
       <div className='movieCard'>
         <img src={img} alt='Movie' className='movieImg' />
         <div className='movieInfo'>
