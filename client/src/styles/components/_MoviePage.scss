@@ -1,3 +1,5 @@
+@use '../../styles/utilities/vars';
+
 .moviePage {
   .imgContainer {
     height: 20rem;
@@ -12,7 +14,7 @@
   }
 }
 
-@media (min-width: 576px) {
+@media (min-width: vars.$tablet) {
   .moviePage {
     display: flex;
 

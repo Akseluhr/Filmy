@@ -18,7 +18,6 @@ const MovieCard = (props) => {
     const fetchData = async () => {
       const id = formatId(props.id)
       const data = await fetchMovie(id)
-      console.log(data)
 
       if (data === null) {
         setLoading(false)

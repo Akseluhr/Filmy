@@ -1,4 +1,6 @@
-@media (min-width: 576px) {
+@use '../../styles/utilities/vars';
+
+@media (min-width: vars.$tablet) {
   .navbar {
     height: 56px;
   }

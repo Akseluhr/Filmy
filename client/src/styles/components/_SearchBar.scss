@@ -1,3 +1,5 @@
+@use '../../styles/utilities/vars';
+
 .nav {
   width: 100%;
   form {
@@ -11,7 +13,7 @@
   max-width: 32rem;
 }
 
-@media (min-width: 576px) {
+@media (min-width: vars.$tablet) {
   .nav {
     max-width: 32rem;
     width: 60%;

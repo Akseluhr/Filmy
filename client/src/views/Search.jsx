@@ -26,7 +26,6 @@ const Search = () => {
         return
       }
 
-      console.log(response)
       setRecommendations(response.data.recommendations)
       setLoading(false)
     }

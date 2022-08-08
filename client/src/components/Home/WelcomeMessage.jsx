@@ -3,13 +3,10 @@ import React from 'react'
 const WelcomeMessage = () => {
   return (
     <div className='welcomeMessage'>
-      <h3>Discover your favorite movie!</h3>
+      <h3>Discover your new favorite movie!</h3>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas illum
-        repudiandae delectus ex reiciendis molestias exercitationem qui a
-        distinctio. Sit, voluptatem. Modi maiores odio nisi non voluptatum est
-        in sunt quasi repellendus, placeat numquam natus cupiditate qui ut porro
-        eos, hic tempora atque iste sed? Perferendis aliquid quae eaque ipsam.
+        Search for the title of a movie you like. You will get recommendations
+        based on that movie. Maybe you will find a new favorite!
       </p>
     </div>
   )
