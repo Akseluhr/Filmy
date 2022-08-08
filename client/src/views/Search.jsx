@@ -15,6 +15,9 @@ const Search = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true)
+      setError(false)
+
       const response = await fetchRecommendations(query)
 
       if (response === null) {
@@ -36,7 +39,7 @@ const Search = () => {
     <Error />
   ) : (
     <>
-      <ActiveSearch />
+      <ActiveSearch movieTitle={query} />
       <Results recommendations={recommendations} />
     </>
   )
