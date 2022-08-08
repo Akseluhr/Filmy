@@ -9,7 +9,11 @@ const config = {
 
 export const fetchRecommendations = async (movieTitle) => {
   const body = { movie_title: movieTitle }
-
-  const response = await axios.post(apiBaseURL, body, config)
-  return response
+  try {
+    const response = await axios.post(apiBaseURL, body, config)
+    return response
+  } catch (error) {
+    console.log(error)
+    return null
+  }
 }
