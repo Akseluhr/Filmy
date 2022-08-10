@@ -33,17 +33,14 @@ const Search = () => {
       if (location.pathname === '/search/randomized-click') {
         console.log('random')
         response = await fetchTop250Movies()
-        console.log(response)
-        console.log(response.data)
-        setTopMovies(response.data.items)
-        const randomMovie = selectRandomMovie(top250Movies)
-        console.log(randomMovie)
+        //const randomMovie = selectRandomMovie(top250Movies)
+       //console.log(randomMovie)
       }
       else if (query){
         console.log('övrig')
         response = await fetchRecommendations(query)
-        console.log(response)
-        setRecommendations(response.data.recommendations)
+        //console.log(response)
+        //setRecommendations(response.data.recommendations)
       }
 
       if (response === null) {
@@ -51,11 +48,12 @@ const Search = () => {
         setLoading(false)
         return
       }
-
+      setTopMovies(response.data.items)
+      console.log(top250Movies)
       setLoading(false)
     }
     fetchData()
-  }, [query])
+  }, [query, location])
 
   return loading ? (
     <Loader />
