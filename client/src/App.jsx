@@ -19,6 +19,7 @@ export default function App() {
             <Route path='about' element={<About />} />
             <Route path='search' element={<Search />}>
               <Route path=':query' element={<Search />} />
+              <Route path='randomized-click' element={<Search />} />
             </Route>
             <Route path='movie'>
               <Route path=':id' element={<Movie />} />
