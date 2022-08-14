@@ -143,32 +143,27 @@ def hello_from_root():
 
 @app.route("/recms", methods=['POST'])
 def make_recommendation():
-
-    # Användarens sökning: {'movie_title': 'Heat (1995)'}
-    data = request.json
-
-    # Hämtar value för "movie_title" (i detta fall Heat (1995)
-    movie = data["movie_title"]
+    
+    data = request.json         # Användarens sökning exempel: {'movie_title': 'Heat (1995)'}
+    movie = data["movie_title"] # Hämtar value för "movie_title" (i detta fall Heat (1995)
 
     if request.method == "POST":
         try:
-            # Läser in data
-            pre = PreProcess()
-            mat_movie_features_csv, hashmap, movie_data, links_data = pre.read_data()
-            # Skapar model
-            recommender = KnnRecommender(
-                mat_movie_features_csv, hashmap, movie_data, links_data)
-            # Lägg användarens keywords här
-            recommended_titles, similar_titles = recommender.make_recommendations(
+            pre = PreProcess()  
+            mat_movie_features_csv, hashmap, movie_data, links_data = pre.read_data()   # Läser in data
+
+            recommender = KnnRecommender(                                               # Skapar model
+                mat_movie_features_csv, hashmap, movie_data, links_data)                # Genererar rekommendationer och liknande filmtitlar
+            recommended_titles, similar_titles = recommender.make_recommendations(      
                 movie, 3)
-            # Lookup här
-            recommended_imdb_IDs = recommender.look_up_imdb_IDs(
+            recommended_imdb_IDs = recommender.look_up_imdb_IDs(                        # Matchar rekommendationer (titlar) med korrekt ID
                 recommended_titles)
-            zipped_movie_id = {'similar_titles': similar_titles, 'recommendations': [
+
+            zipped_movie_id = {'similar_titles': similar_titles, 'recommendations': [   # Fogar samma inför JSON-serialisering.
                 {'title': title, 'imdbId': imdbId} for title, imdbId in zip(recommended_titles, recommended_imdb_IDs)]}
         except:
             recommended_titles = ['Movie not found']
-        return json.dumps(
+        return json.dumps(                                                              # Returnerar JSON-Objekt
             zipped_movie_id, default=recommender.convert, indent=4
         )
 
