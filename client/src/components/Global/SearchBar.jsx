@@ -8,6 +8,11 @@ const SearchBar = (props) => {
   const [query, setQuery] = useState('')
   const navigate = useNavigate()
 
+  // Triggar funktionen handleClick() i Home.jsx
+  const handleClick = () => {
+    props.handleClick()
+  }
+
   return (
     <div className={props.type}>
       <Form
@@ -27,6 +32,9 @@ const SearchBar = (props) => {
 
         <Button variant='outline-primary' type='submit'>
           Search
+        </Button>
+        <Button className='ml-2' variant='outline-primary' onClick={handleClick}>
+          Randomize
         </Button>
       </Form>
     </div>
