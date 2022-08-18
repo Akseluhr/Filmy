@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import { INITIAL_STATE, STATES, dataReducer } from '../services/dataReducer'
+import React, { useEffect, useReducer } from 'react'
 
 import ActiveSearch from './../components/Search/ActiveSearch'
 import Error from './../components/Global/Error'
@@ -9,37 +10,36 @@ import { useParams } from 'react-router-dom'
 
 const Search = () => {
   const { query } = useParams()
-  const [recommendations, setRecommendations] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+  const [state, dispatch] = useReducer(dataReducer, INITIAL_STATE)
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true)
-      setError(false)
-
       const response = await fetchRecommendations(query)
 
       if (response === null) {
-        setError(true)
-        setLoading(false)
+        dispatch({ type: STATES.ERROR })
         return
       }
 
-      setRecommendations(response.data.recommendations)
-      setLoading(false)
+      const data = response.data.recommendations
+
+      dispatch({
+        type: STATES.SUCCESS,
+        payload: data,
+      })
     }
+
     fetchData()
   }, [query])
 
-  return loading ? (
+  return state.loading ? (
     <Loader />
-  ) : error ? (
+  ) : state.error ? (
     <Error />
   ) : (
     <>
       <ActiveSearch movieTitle={query} />
-      <Results recommendations={recommendations} />
+      <Results recommendations={state.data} />
     </>
   )
 }
