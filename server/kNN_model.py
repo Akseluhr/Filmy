@@ -160,7 +160,7 @@ def make_recommendation():
                 mat_movie_features_csv, hashmap, movie_data, links_data)
             # Lägg användarens keywords här
             recommended_titles, similar_titles = recommender.make_recommendations(
-                movie, 3)
+                movie, 18)
             # Lookup här
             recommended_imdb_IDs = recommender.look_up_imdb_IDs(
                 recommended_titles)
