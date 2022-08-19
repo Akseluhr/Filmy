@@ -1,4 +1,4 @@
-import { INITIAL_STATE, STATES, dataReducer } from '../services/dataReducer'
+import { INITIAL_STATE, STATES, reducer } from '../services/reducer'
 import React, { useEffect, useReducer } from 'react'
 
 import ActiveSearch from './../components/Search/ActiveSearch'
@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom'
 
 const Search = () => {
   const { query } = useParams()
-  const [state, dispatch] = useReducer(dataReducer, INITIAL_STATE)
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
   useEffect(() => {
     const fetchData = async () => {

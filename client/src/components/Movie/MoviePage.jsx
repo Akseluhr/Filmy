@@ -1,65 +1,46 @@
-import { useEffect, useState } from 'react'
+import { INITIAL_STATE, STATES, reducer } from '../../services/reducer'
+import React, { useReducer } from 'react'
 
 import Badge from 'react-bootstrap/Badge'
 import Error from '../Global/Error'
 import Loader from '../Global/Loader'
-import React from 'react'
 import { fetchMovie } from '../../api/fetchMovie'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 const MoviePage = () => {
   const { id } = useParams()
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
-
-  const [image, setImage] = useState()
-  const [fullTitle, setFullTitle] = useState()
-  const [plot, setPlot] = useState()
-  const [genreList, setGenreList] = useState([])
-  const [stars, setStars] = useState()
-  const [directors, setDirectors] = useState()
-  const [writers, setWriters] = useState()
-  const [imDbRating, setImDbRating] = useState()
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchMovie(id)
 
       if (data === null) {
-        setLoading(false)
-        setError(true)
+        dispatch({ type: STATES.ERROR })
         return
       }
 
-      setImage(data.image)
-      setFullTitle(data.fullTitle)
-      setPlot(data.plot)
-      setGenreList(data.genreList)
-      setStars(data.stars)
-      setDirectors(data.directors)
-      setWriters(data.writers)
-      setImDbRating(data.imDbRating)
-
-      setLoading(false)
+      dispatch({ type: STATES.SUCCESS, payload: data })
     }
 
     fetchData()
   }, [id])
 
-  return loading ? (
-    <Loader loading={loading} />
-  ) : error ? (
+  return state.loading ? (
+    <Loader loading />
+  ) : state.error ? (
     <Error />
   ) : (
     <div className='moviePage'>
       <div className='imgContainer'>
-        <img src={image} alt='movie' />
+        <img src={state.data.image} alt='movie' />
       </div>
       <div className='movieText'>
-        <h2>{fullTitle}</h2>
-        <p>{plot}</p>
+        <h2>{state.data.fullTitle}</h2>
+        <p>{state.data.plot}</p>
         <h5>
-          {genreList.map((genre, idx) => (
+          {state.data.genreList.map((genre, idx) => (
             <span key={idx}>
               <Badge pill bg='secondary'>
                 {genre.value}
@@ -70,20 +51,20 @@ const MoviePage = () => {
         <br />
         <p>
           <b>Actors: </b>
-          {stars}
+          {state.data.stars}
         </p>
         <p>
           <b>Director(s): </b>
-          {directors}
+          {state.data.directors}
         </p>
         <p>
           <b>Writer(s): </b>
-          {writers}
+          {state.data.writers}
         </p>
         <p>
           <b>IMDb rating: </b>
           <Badge pill bg='warning' text='dark'>
-            {imDbRating}/10
+            {state.data.imDbRating}/10
           </Badge>
         </p>
       </div>

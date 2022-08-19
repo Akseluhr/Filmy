@@ -1,8 +1,4 @@
-import {
-  INITIAL_STATE,
-  STATES,
-  movieCardReducer,
-} from '../../services/movieCardReducer'
+import { INITIAL_STATE, STATES, reducer } from '../../services/reducer'
 import { useEffect, useReducer, useState } from 'react'
 
 import { LinkContainer } from 'react-router-bootstrap'
@@ -12,7 +8,7 @@ import { fetchMovie } from '../../api/fetchMovie'
 import { formatId } from './../../api/formatId'
 
 const MovieCard = (props) => {
-  const [state, dispatch] = useReducer(movieCardReducer, INITIAL_STATE)
+  const [state, dispatch] = useReducer(reducer, INITIAL_STATE)
   const [imdbId, setImdbId] = useState()
 
   useEffect(() => {
@@ -43,9 +39,9 @@ const MovieCard = (props) => {
   ) : (
     <LinkContainer to={`/movie/${imdbId}`}>
       <div className='movieCard'>
-        <img src={state.img} alt='Movie' className='movieImg' />
+        <img src={state.data.image} alt='Movie' className='movieImg' />
         <div className='movieInfo'>
-          <h6>{state.title}</h6>
+          <h6>{state.data.fullTitle}</h6>
         </div>
       </div>
     </LinkContainer>

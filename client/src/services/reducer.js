@@ -8,7 +8,7 @@ export const STATES = {
   SUCCESS: 'FETCH_SUCCESS',
 }
 
-export const movieCardReducer = (state, action) => {
+export const reducer = (state, action) => {
   switch (action.type) {
     case STATES.ERROR:
       return {
@@ -19,8 +19,7 @@ export const movieCardReducer = (state, action) => {
       return {
         loading: false,
         error: false,
-        img: action.payload.image,
-        title: action.payload.fullTitle,
+        data: action.payload,
       }
     default:
       return state
